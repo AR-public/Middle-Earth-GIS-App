@@ -33,26 +33,20 @@ function App() {
       name: "Fangorn Forest",
       link: "https://tolkiengateway.net/wiki/Fangorn_Forest#:~:text=Fangorn%20Forest%20was%20a%20deep,'Treebeard').",
       imageLink: "https://www.thesun.co.uk/wp-content/uploads/2019/01/NINTCHDBPICT000462134420.jpg",
+    },
+    {
+      name: "Emyn Muil",
+      link: "https://lotr.fandom.com/wiki/Emyn_Muil",
+      imageLink: "https://static.wikia.nocookie.net/lotr/images/f/f3/Emyn_Muil.webp",
     }
   ]
 
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js </code> and save to reload.
-        </p>
-        { 
-          // onClick you should set national parks to a list of national parks
-        }
+      <div className="App-header">
+
         <button onClick={(evt) => {(currentMiddleEarthLocation.length === 0) ? setMiddleEarthLocation(middleEarthLoaded) : setMiddleEarthLocation(middleEarthLoaded)}}> Click to load Middle Earth Locations </button>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
+       
           {
 
           }
@@ -65,8 +59,7 @@ function App() {
               {middleEarthLoaded.map((location) => <Tile name={location.name} link={location.link} imageLink={location.imageLink} />)} 
               </div>
           }
-        </a>
-      </header>
+      </div>
     </div>
   );
 }
