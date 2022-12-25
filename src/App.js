@@ -1,7 +1,7 @@
-import logo from './logo.svg';
 import './App.css';
 import { useState } from 'react';
 import { Tile } from './Tile';
+import MapContainer from './MapContainer';
 
 function App() {
 
@@ -56,15 +56,15 @@ function App() {
               {middleEarthLoaded.map((location) => <Tile name={location.name} link={location.link} imageLink={location.imageLink} />)} 
               </div>
           }
+
+              {/* <div style={height: 100px}> */}
+
+                <MapContainer zoom={4} center={[33.852169, -100.5322]} isHidden={false}/>
+              {/* </div> */}
       </div>
     </div>
   );
 
-  return (
-    <div>
-      MapContainer
-    </div>
-  )
 
 }
 

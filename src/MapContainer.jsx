@@ -2,20 +2,17 @@
 // the file name of the file you're creating it in!!!
 
 import React from 'react';
-import { MapContainer } from "react-leaflet";
-import { BasemapLayer, FeatureLayer } from "react-esri-leaflet";
-import EsriLeafletGeoSearch from "react-esri-leaflet/plugins/GeoSearch";
+import { MapContainer as MC } from "react-leaflet";
+import { BasemapLayer } from "react-esri-leaflet";
 
-const MapContainer = ({ zoom, center, imageLink }) => {
-  return (
-    <div>
-      <MapContainer zoom={zoom} center={center}>
-      <BasemapLayer name="DarkGray" />
-      <FeatureLayer url={featureLayerURL} />
-      <EsriLeafletGeoSearch useMapBounds={false} position="topright" />
-    </MapContainer>
-    </div>
-  )
+const MapContainer = ({ zoom, center, isHidden }) => {
+    return (
+        <div className={isHidden ? "hide" : ""}>
+            <MC zoom={zoom} center={center}>
+                <BasemapLayer name="Oceans"/>
+            </MC>
+        </div>
+    )
 }
 
 export default MapContainer
