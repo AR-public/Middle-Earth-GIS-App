@@ -5,19 +5,16 @@ import { Tile } from './Tile';
 
 function App() {
 
-  // initialize an empty array for national parks
+  // initialising an empty array for Middle Earth locations
   const middleEarthLocation = []
   
 
-  // put the national parks in useState to get the currentValue & setCurrentValue function
+  // putting the Middle Earth locations in useState to get the currentValue & setCurrentValue function
 
   const [currentMiddleEarthLocation, setMiddleEarthLocation] = useState(middleEarthLocation);
   
 
-  // declare a new array WITH THE NATIONAL PARK DATA 
-  // (YOU WILL USE THIS IN THE ONCLICK when you Set State ;) )
-
-  // const nationalParksLoaded = ["Cliffs Of Mohar", "Kakadu", "Makalu"];
+  // declaring a new array WITH THE Middle Earth DATA
   const middleEarthLoaded = [
     {
       name: "Mordor",
@@ -37,7 +34,7 @@ function App() {
     {
       name: "Emyn Muil",
       link: "https://lotr.fandom.com/wiki/Emyn_Muil",
-      imageLink: "https://static.wikia.nocookie.net/lotr/images/f/f3/Emyn_Muil.webp",
+      imageLink: "https://visionofthepalantir.files.wordpress.com/2018/01/emynmuil3.jpg?w=1200",
     }
   ]
 
@@ -52,7 +49,7 @@ function App() {
           }
           {(currentMiddleEarthLocation.length === 0
           ) ?
-            <div>
+            <div style>
             NO DATA
             </div>
             : <div className="tile_container">
@@ -62,6 +59,13 @@ function App() {
       </div>
     </div>
   );
+
+  return (
+    <div>
+      MapContainer
+    </div>
+  )
+
 }
 
 export default App;
