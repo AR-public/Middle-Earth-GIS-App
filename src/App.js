@@ -49,7 +49,7 @@ function App() {
           }
           {(currentMiddleEarthLocation.length === 0
           ) ?
-            <div style>
+            <div>
             NO DATA
             </div>
             : <div className="tile_container">
