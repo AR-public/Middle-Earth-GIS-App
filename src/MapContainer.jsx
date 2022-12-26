@@ -15,4 +15,5 @@ const MapContainer = ({ zoom, center, isHidden }) => {
     )
 }
 
+
 export default MapContainer

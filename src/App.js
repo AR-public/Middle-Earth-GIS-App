@@ -2,19 +2,10 @@ import './App.css';
 import { useState } from 'react';
 import { Tile } from './Tile';
 import MapContainer from './MapContainer';
+import TileContainer from './utils/TileContainer';
 
 function App() {
 
-  // initialising an empty array for Middle Earth locations
-  const middleEarthLocation = []
-  
-
-  // putting the Middle Earth locations in useState to get the currentValue & setCurrentValue function
-
-  const [currentMiddleEarthLocation, setMiddleEarthLocation] = useState(middleEarthLocation);
-  
-
-  // declaring a new array WITH THE Middle Earth DATA
   const middleEarthLoaded = [
     {
       name: "Mordor",
@@ -38,27 +29,39 @@ function App() {
     }
   ]
 
+  
+  // determines whether we are in gallery mode
+  // gallery mode is defined as 
+  // map hidden, gallery shown.
+  // if disabled, map shown, gallery hidden.
+  const [isGalleryModeEnabled, setIsGalleryModeEnabled] = useState(false)
+  // putting the Middle Earth locations in useState to get the currentValue & setCurrentValue function
+
+  const [currentMiddleEarthLocation, setMiddleEarthLocation] = useState(middleEarthLoaded);
+  
+
+  // declaring a new array WITH THE Middle Earth DATA
+
+
   return (
     <div className="App">
       <div className="App-header">
 
-        <button onClick={(evt) => {(currentMiddleEarthLocation.length === 0) ? setMiddleEarthLocation(middleEarthLoaded) : setMiddleEarthLocation(middleEarthLoaded)}}> Click to load Middle Earth Locations </button>
+        {/* <button onClick={(evt) => {(currentMiddleEarthLocation.length === 0) ? setMiddleEarthLocation(middleEarthLoaded) : setMiddleEarthLocation(middleEarthLoaded)}}> Click to load Middle Earth Locations </button> */}
        
           {
-
+              
           }
           {(currentMiddleEarthLocation.length === 0
           ) ?
             <div>
             NO DATA
             </div>
-            : <div className="tile_container">
-              {middleEarthLoaded.map((location) => <Tile name={location.name} link={location.link} imageLink={location.imageLink} />)} 
-              </div>
+            : <TileContainer middleEarthLoaded={middleEarthLoaded} />
           }
 
               <div>
-                <MapContainer zoom={5} center={[-40.848461, 174.763336]} isHidden={false}/>
+                <MapContainer zoom={5} center={[-40.848461, 174.763336]} isHidden={isGalleryModeEnabled}/>
               </div>
       </div>
     </div>
