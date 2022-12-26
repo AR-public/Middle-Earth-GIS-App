@@ -57,10 +57,9 @@ function App() {
               </div>
           }
 
-              {/* <div style={height: 100px}> */}
-
-                <MapContainer zoom={4} center={[33.852169, -100.5322]} isHidden={false}/>
-              {/* </div> */}
+              <div>
+                <MapContainer zoom={5} center={[-40.848461, 174.763336]} isHidden={false}/>
+              </div>
       </div>
     </div>
   );
