@@ -15,9 +15,16 @@
   }
 }
 
-.App-header {
+.App-body {
 }
 
+.App-header {
+  text-align: center;
+  font-family: 'Cinzel Decorative', cursive;
+  color: burlywood;
+  font-size: 1.2rem;
+  padding-top: 20px;
+}
 
 .App-link {
   color: #61dafb;
@@ -30,6 +37,7 @@
   flex-direction: row;
   justify-content: space-around;
   align-items: center;
+  padding-bottom: 30px;
 }
 
 @keyframes App-logo-spin {
