@@ -8,47 +8,50 @@ import TileContainer from './utils/TileContainer';
 
 function App() {
 
-  const middleEarthLoaded = [
+  const middleEarthGallery = [
     {
       name: "Mordor",
       link: "https://tolkiengateway.net/wiki/Mordor",
       imageLink: "https://tolkiengateway.net/w/images/e/e0/Ted_Nasmith_-_Across_Gorgoroth.jpg",
-      coordinates: [-39.012, 175.734966],
+      coordinates: [ 17.40000000039987, -83.90000000039953],
       zoomExtent: 2 
     },
     {
       name: "The Shire",
       link: "https://tolkiengateway.net/wiki/The_Shire",
       imageLink: "https://c4.iggcdn.com/indiegogo-media-prod-cld/image/upload/c_fill,w_695,g_auto,q_auto,dpr_2.6,f_auto,h_460/m5nyctpicqm51isnut6v",
-      coordinates: [-39.012, 175.734966],
+      coordinates: [-39.012, 175.774966],
       zoomExtent: 2 
     },
     {
       name: "Fangorn Forest",
       link: "https://tolkiengateway.net/wiki/Fangorn_Forest#:~:text=Fangorn%20Forest%20was%20a%20deep,'Treebeard').",
       imageLink: "https://www.thesun.co.uk/wp-content/uploads/2019/01/NINTCHDBPICT000462134420.jpg",
-      coordinates: [-39.012, 175.734966],
+      coordinates: [-39.012, 175.734466],
       zoomExtent: 2 
     },
     {
       name: "Emyn Muil",
       link: "https://lotr.fandom.com/wiki/Emyn_Muil",
       imageLink: "https://visionofthepalantir.files.wordpress.com/2018/01/emynmuil3.jpg?w=1200",
-      coordinates: [-39.012, 175.734966],
+      coordinates: [-39.012, 175.734926],
       zoomExtent: 2 
     }
   ]
 
-  
+  const selectLocation = (coordinates) => {
+    mapController.setView(coordinates,14);
+  }
+
   // determines whether we are in gallery mode
   // gallery mode is defined as 
   // map hidden, gallery shown.
   // if disabled, map shown, gallery hidden.
-  const [isGalleryModeEnabled, setIsGalleryModeEnabled] = useState(true)
+  const [isGalleryModeEnabled, setIsGalleryModeEnabled] = useState(true);
   // putting the Middle Earth locations in useState to get the currentValue & setCurrentValue function
 
-  const [currentMiddleEarthLocation, setMiddleEarthLocation] = useState(middleEarthLoaded);
-  
+  const [middleEarthGalleryValues, setMiddleEarthLocation] = useState(middleEarthGallery);
+  const [mapController, setMap] = useState();
 
   // declaring a new array WITH THE Middle Earth DATA
 
@@ -63,11 +66,8 @@ function App() {
       <div className="App-body">
 
         {<button onClick={(evt) => {(isGalleryModeEnabled) ? setIsGalleryModeEnabled(false) : setIsGalleryModeEnabled(true)}}> Click to toggle gallery/map view </button>}
-       
-          {
-              
-          }
-          {(currentMiddleEarthLocation.length === 0
+        
+          {(middleEarthGalleryValues.length === 0
           ) ?
             <div>
             NO DATA
@@ -75,17 +75,16 @@ function App() {
 
             : 
             <div>
-            <TileContainer middleEarthLoaded={middleEarthLoaded} isHidden={!isGalleryModeEnabled} />
+            <TileContainer middleEarthLoaded={middleEarthGallery} isHidden={!isGalleryModeEnabled} setCurrentMiddleEarthCoordinates={selectLocation} />
             </div>
           }
 
               <div>
-                <MapContainer zoom={5} center={[-40.848461, 174.763336]} isHidden={isGalleryModeEnabled}/>
+                <MapContainer zoom={4} center={middleEarthGallery[0].coordinates} isHidden={isGalleryModeEnabled} setMap={setMap}/>
               </div>
       </div>
     </div>
   );
-
 
 }
 
