@@ -1,5 +1,5 @@
 import './App.css';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Tile } from './Tile';
 // import './TileContainer.css';
 import MapContainer from './MapContainer';
@@ -7,6 +7,7 @@ import TileContainer from './utils/TileContainer';
 
 
 function App() {
+  const featureServiceURL = "https://services8.arcgis.com/ZlzhoQRdJWTeuwEP/ArcGIS/rest/services/LordOfTheRingsLocations/FeatureServer/0/query?where=1%3D1&objectIds=&time=&geometry=&geometryType=esriGeometryEnvelope&inSR=&spatialRel=esriSpatialRelIntersects&resultType=none&distance=0.0&units=esriSRUnit_Meter&relationParam=&returnGeodetic=false&outFields=*&returnGeometry=true&featureEncoding=esriDefault&multipatchOption=xyFootprint&maxAllowableOffset=&geometryPrecision=&outSR=&defaultSR=&datumTransformation=&applyVCSProjection=false&returnIdsOnly=false&returnUniqueIdsOnly=false&returnCountOnly=false&returnExtentOnly=false&returnQueryGeometry=false&returnDistinctValues=false&cacheHint=false&orderByFields=&groupByFieldsForStatistics=&outStatistics=&having=&resultOffset=&resultRecordCount=&returnZ=false&returnM=false&returnExceededLimitFeatures=true&quantizationParameters=&sqlFormat=none&f=pjson&token="
 
   const middleEarthGallery = [
     {
@@ -50,11 +51,24 @@ function App() {
   const [isGalleryModeEnabled, setIsGalleryModeEnabled] = useState(true);
   // putting the Middle Earth locations in useState to get the currentValue & setCurrentValue function
 
-  const [middleEarthGalleryValues, setMiddleEarthLocation] = useState(middleEarthGallery);
+  const [middleEarthGalleryValues, setMiddleEarthGalleryValues] = useState(middleEarthGallery);
   const [mapController, setMap] = useState();
-
   // declaring a new array WITH THE Middle Earth DATA
 
+
+  useEffect(() => {
+    fetch(featureServiceURL).then((response) => {
+      response.json().then(d => { debugger; 
+        console.log(d);
+        setMiddleEarthGalleryValues(d.features.map(({attributes, geometry}) => Object.assign({},attributes, geometry)).map(({x,y, description, imageURL, name, link}) => ({ coordinates: [x,y], description, imageLink: imageURL, name, link})))
+      })
+      debugger;
+      // console.log(response.data);
+      // const JSONString = response.data;
+      // setMiddleEarthGalleryValues(response.data);
+    }) 
+  },
+  [])
 
   return (
     <div className="App">
@@ -75,7 +89,7 @@ function App() {
 
             : 
             <div>
-            <TileContainer middleEarthLoaded={middleEarthGallery} isHidden={!isGalleryModeEnabled} setCurrentMiddleEarthCoordinates={selectLocation} />
+            <TileContainer middleEarthLoaded={middleEarthGalleryValues} isHidden={!isGalleryModeEnabled} setCurrentMiddleEarthCoordinates={selectLocation} />
             </div>
           }
 
