@@ -7,41 +7,41 @@ import TileContainer from './utils/TileContainer';
 
 
 function App() {
-  const featureServiceURL = "https://services8.arcgis.com/ZlzhoQRdJWTeuwEP/ArcGIS/rest/services/LordOfTheRingsLocations/FeatureServer/0/query?where=1%3D1&objectIds=&time=&geometry=&geometryType=esriGeometryEnvelope&inSR=&spatialRel=esriSpatialRelIntersects&resultType=none&distance=0.0&units=esriSRUnit_Meter&relationParam=&returnGeodetic=false&outFields=*&returnGeometry=true&featureEncoding=esriDefault&multipatchOption=xyFootprint&maxAllowableOffset=&geometryPrecision=&outSR=&defaultSR=&datumTransformation=&applyVCSProjection=false&returnIdsOnly=false&returnUniqueIdsOnly=false&returnCountOnly=false&returnExtentOnly=false&returnQueryGeometry=false&returnDistinctValues=false&cacheHint=false&orderByFields=&groupByFieldsForStatistics=&outStatistics=&having=&resultOffset=&resultRecordCount=&returnZ=false&returnM=false&returnExceededLimitFeatures=true&quantizationParameters=&sqlFormat=none&f=pjson&token="
+  const featureServiceURL = "https://services8.arcgis.com/ZlzhoQRdJWTeuwEP/ArcGIS/rest/services/LordOfTheRingsLocations/FeatureServer/0/query?where=1%3D1&objectIds=&time=&geometry=&geometryType=esriGeometryEnvelope&inSR=&spatialRel=esriSpatialRelIntersects&resultType=none&distance=0.0&units=esriSRUnit_Meter&relationParam=&returnGeodetic=false&outFields=*&returnGeometry=true&featureEncoding=esriDefault&multipatchOption=xyFootprint&maxAllowableOffset=&geometryPrecision=&outSR=4326&defaultSR=&datumTransformation=&applyVCSProjection=false&returnIdsOnly=false&returnUniqueIdsOnly=false&returnCountOnly=false&returnExtentOnly=false&returnQueryGeometry=false&returnDistinctValues=false&cacheHint=false&orderByFields=&groupByFieldsForStatistics=&outStatistics=&having=&resultOffset=&resultRecordCount=&returnZ=false&returnM=false&returnExceededLimitFeatures=true&quantizationParameters=&sqlFormat=none&f=pjson&token="
 
   const middleEarthGallery = [
     {
       name: "Mordor",
       link: "https://tolkiengateway.net/wiki/Mordor",
       imageLink: "https://tolkiengateway.net/w/images/e/e0/Ted_Nasmith_-_Across_Gorgoroth.jpg",
-      coordinates: [ 17.40000000039987, -83.90000000039953],
-      zoomExtent: 2 
+      coordinates: [-42.012, 175.774966],
+      zoomExtent: 2
     },
-    {
-      name: "The Shire",
-      link: "https://tolkiengateway.net/wiki/The_Shire",
-      imageLink: "https://c4.iggcdn.com/indiegogo-media-prod-cld/image/upload/c_fill,w_695,g_auto,q_auto,dpr_2.6,f_auto,h_460/m5nyctpicqm51isnut6v",
-      coordinates: [-39.012, 175.774966],
-      zoomExtent: 2 
-    },
-    {
-      name: "Fangorn Forest",
-      link: "https://tolkiengateway.net/wiki/Fangorn_Forest#:~:text=Fangorn%20Forest%20was%20a%20deep,'Treebeard').",
-      imageLink: "https://www.thesun.co.uk/wp-content/uploads/2019/01/NINTCHDBPICT000462134420.jpg",
-      coordinates: [-39.012, 175.734466],
-      zoomExtent: 2 
-    },
-    {
-      name: "Emyn Muil",
-      link: "https://lotr.fandom.com/wiki/Emyn_Muil",
-      imageLink: "https://visionofthepalantir.files.wordpress.com/2018/01/emynmuil3.jpg?w=1200",
-      coordinates: [-39.012, 175.734926],
-      zoomExtent: 2 
-    }
+    // {
+    //   name: "The Shire",
+    //   link: "https://tolkiengateway.net/wiki/The_Shire",
+    //   imageLink: "https://c4.iggcdn.com/indiegogo-media-prod-cld/image/upload/c_fill,w_695,g_auto,q_auto,dpr_2.6,f_auto,h_460/m5nyctpicqm51isnut6v",
+    //   coordinates: [-39.012, 175.774966],
+    //   zoomExtent: 2
+    // },
+    // {
+    //   name: "Fangorn Forest",
+    //   link: "https://tolkiengateway.net/wiki/Fangorn_Forest#:~:text=Fangorn%20Forest%20was%20a%20deep,'Treebeard').",
+    //   imageLink: "https://www.thesun.co.uk/wp-content/uploads/2019/01/NINTCHDBPICT000462134420.jpg",
+    //   coordinates: [-39.012, 175.734466],
+    //   zoomExtent: 2
+    // },
+    // {
+    //   name: "Emyn Muil",
+    //   link: "https://lotr.fandom.com/wiki/Emyn_Muil",
+    //   imageLink: "https://visionofthepalantir.files.wordpress.com/2018/01/emynmuil3.jpg?w=1200",
+    //   coordinates: [-39.012, 175.734926],
+    //   zoomExtent: 2
+    // }
   ]
 
   const selectLocation = (coordinates) => {
-    mapController.setView(coordinates,14);
+    mapController.setView(coordinates, 14);
   }
 
   // determines whether we are in gallery mode
@@ -58,44 +58,54 @@ function App() {
 
   useEffect(() => {
     fetch(featureServiceURL).then((response) => {
-      response.json().then(d => { debugger; 
+      response.json().then(d => {
         console.log(d);
-        setMiddleEarthGalleryValues(d.features.map(({attributes, geometry}) => Object.assign({},attributes, geometry)).map(({x,y, description, imageURL, name, link}) => ({ coordinates: [x,y], description, imageLink: imageURL, name, link})))
+        let cleanValues = [];
+        d.features.forEach(feature => {
+          // pull the attributes from the feature to this object
+          cleanValues.push({
+            name: feature.attributes.name,
+            link: feature.attributes.link,
+            imageLink: feature.attributes.imageURL,
+            coordinates: [feature.geometry.y, feature.geometry.x],
+          })
+        })
+        // const cleanValues = d.features.map(({ attributes, geometry }) => Object.assign({}, attributes, geometry)).map(({ x, y, description, imageURL, name, link }) => ({ coordinates: [y, x], description, imageLink: imageURL, name, link }));
+        setMiddleEarthGalleryValues(cleanValues);
       })
-      debugger;
       // console.log(response.data);
       // const JSONString = response.data;
       // setMiddleEarthGalleryValues(response.data);
-    }) 
+    })
   },
-  [])
+    [])
 
   return (
     <div className="App">
 
       <div className="App-header">
-      <h1> Middle Earth GIS </h1>
+        <h1> Middle Earth GIS </h1>
       </div>
 
       <div className="App-body">
 
-        {<button onClick={(evt) => {(isGalleryModeEnabled) ? setIsGalleryModeEnabled(false) : setIsGalleryModeEnabled(true)}}> Click to toggle gallery/map view </button>}
-        
-          {(middleEarthGalleryValues.length === 0
-          ) ?
-            <div>
+        {<button onClick={(evt) => { (isGalleryModeEnabled) ? setIsGalleryModeEnabled(false) : setIsGalleryModeEnabled(true) }}> Click to toggle gallery/map view </button>}
+
+        {(middleEarthGalleryValues.length === 0
+        ) ?
+          <div>
             NO DATA
-            </div>
+          </div>
 
-            : 
-            <div>
+          :
+          <div>
             <TileContainer middleEarthLoaded={middleEarthGalleryValues} isHidden={!isGalleryModeEnabled} setCurrentMiddleEarthCoordinates={selectLocation} />
-            </div>
-          }
+          </div>
+        }
 
-              <div>
-                <MapContainer zoom={4} center={middleEarthGallery[0].coordinates} isHidden={isGalleryModeEnabled} setMap={setMap}/>
-              </div>
+        <div>
+          <MapContainer zoom={4} center={middleEarthGallery[0].coordinates} isHidden={isGalleryModeEnabled} setMap={setMap} />
+        </div>
       </div>
     </div>
   );
