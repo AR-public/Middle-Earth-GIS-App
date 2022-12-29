@@ -84,13 +84,15 @@ function App() {
     <div className="App">
 
       <div className="App-header">
-        <h1 className='PageTitle'> Middle Earth GIS </h1>
+        <h1> Middle Earth GIS </h1>
       </div>
 
       <div className="App-body">
-
-        {<button onClick={(evt) => { (isGalleryModeEnabled) ? setIsGalleryModeEnabled(false) : setIsGalleryModeEnabled(true) }}> Click to toggle gallery/map view </button>}
-
+        
+        <div className='gallery-button'>
+          {<button onClick={(evt) => { (isGalleryModeEnabled) ? setIsGalleryModeEnabled(false) : setIsGalleryModeEnabled(true) }}> Click to toggle gallery/map view </button>}
+        </div>
+        
         {(middleEarthGalleryValues.length === 0
         ) ?
           <div>
