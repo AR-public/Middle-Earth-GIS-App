@@ -14,8 +14,8 @@ function App() {
       name: "Mordor",
       link: "https://tolkiengateway.net/wiki/Mordor",
       imageLink: "https://tolkiengateway.net/w/images/e/e0/Ted_Nasmith_-_Across_Gorgoroth.jpg",
-      coordinates: [-42.012, 175.774966],
-      zoomExtent: 2
+      coordinates: [-43.000, 175.774966],
+      zoomExtent: 5
     },
     // {
     //   name: "The Shire",
@@ -84,7 +84,7 @@ function App() {
     <div className="App">
 
       <div className="App-header">
-        <h1> Middle Earth GIS </h1>
+        <h1 className='PageTitle'> Middle Earth GIS </h1>
       </div>
 
       <div className="App-body">
@@ -104,7 +104,7 @@ function App() {
         }
 
         <div>
-          <MapContainer zoom={4} center={middleEarthGallery[0].coordinates} isHidden={isGalleryModeEnabled} setMap={setMap} />
+          <MapContainer zoom={middleEarthGallery[0].zoomExtent} center={middleEarthGallery[0].coordinates} isHidden={isGalleryModeEnabled} setMap={setMap} />
         </div>
       </div>
     </div>

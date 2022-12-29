@@ -1,8 +1,15 @@
 .App {
   text-align: center;
   height: 100vh;
-  background-color: rgb(56, 55, 54)
+  background-color: #0D1209
 }
+
+/* .PageTitle{
+  color: #BFBA73;
+  font-size: 3rem;
+  padding-top: 50px;
+  padding-bottom: 30px;
+} */
 
 .App-logo {
   height: 40vmin;
@@ -16,14 +23,16 @@
 }
 
 .App-body {
+  background-color:#0D1209;
 }
 
 .App-header {
   text-align: center;
   font-family: 'Cinzel Decorative', cursive;
-  color: burlywood;
-  font-size: 1.2rem;
-  padding-top: 20px;
+  color: #BFBA73;
+  font-size: 1.7rem;
+  padding-top: 50px;
+  padding-bottom: 30px;
 }
 
 .App-link {

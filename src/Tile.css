@@ -1,8 +1,10 @@
 .tile_element {
-    background-color: aliceblue;
+    background-color: rgba(0, 0, 0, 0.358);
+    color: #D9D5A3;
     width: 300px;
     height: 350px;
     margin-top: 50px;
+    
 }
 
 .tile_element > img {
