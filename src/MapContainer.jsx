@@ -2,9 +2,10 @@
 // the file name of the file you're creating it in!!!
 
 import React, { useEffect, useRef} from 'react';
-import { Layer, Map as LeafletMap } from "leaflet";
+import { Layer, Map as LeafletMap, } from "leaflet";
+import * as L from "leaflet";
 
-import { vectorBasemapLayer } from "esri-leaflet-vector";
+import { vectorBasemapLayer as vectorTileLayer } from "esri-leaflet-vector";
 import { FeatureLayer } from 'esri-leaflet';
 
 
@@ -24,13 +25,22 @@ const MapContainer = ({ zoom, center, isHidden, setMap }) => {
         mapController.setView(center,zoom);
   
         // Add a basemap
-        vectorBasemapLayer("ArcGIS:Streets", {
+        vectorTileLayer("343d745043fd4573bb977f41e1ea2833", {
           apiKey: "AAPK559a52a5414144af8f7b12d06c04ec69O_HNHAFWc31Pgl5MMcdU41b5SN8nRtxxhvgE_gYAeC5csCdw5rrSLzlRB70vb-R1", // https://developers.arcgis.com
+          portalURL: "https://aruifioladv6qgop.maps.arcgis.com"
         }).addTo(mapController);
-        new FeatureLayer({url: "https://services8.arcgis.com/ZlzhoQRdJWTeuwEP/ArcGIS/rest/services/LordOfTheRingsLocations/FeatureServer/0"}).addTo(mapController);
-        setMap(mapController);
+        const onEachFeature = (feature, layer) => {
+          debugger;
+          const popupContent = `${feature.properties.name}`
+          layer.bindPopup(popupContent)
+        }
+       const pointFL = new FeatureLayer({url: "https://services8.arcgis.com/ZlzhoQRdJWTeuwEP/ArcGIS/rest/services/LordOfTheRingsLocations/FeatureServer/0", onEachFeature:onEachFeature}).addTo(mapController);
+       
+       setMap(mapController);
       }
-  
+      
+
+
       return () => {
         if(mapRefCurrent) {
           mapRefCurrent.innerHTML = '';

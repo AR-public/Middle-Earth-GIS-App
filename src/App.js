@@ -1,10 +1,7 @@
 import './App.css';
 import { useEffect, useState } from 'react';
-import { Tile } from './Tile';
-// import './TileContainer.css';
 import MapContainer from './MapContainer';
 import TileContainer from './utils/TileContainer';
-
 
 function App() {
   const featureServiceURL = "https://services8.arcgis.com/ZlzhoQRdJWTeuwEP/ArcGIS/rest/services/LordOfTheRingsLocations/FeatureServer/0/query?where=1%3D1&objectIds=&time=&geometry=&geometryType=esriGeometryEnvelope&inSR=&spatialRel=esriSpatialRelIntersects&resultType=none&distance=0.0&units=esriSRUnit_Meter&relationParam=&returnGeodetic=false&outFields=*&returnGeometry=true&featureEncoding=esriDefault&multipatchOption=xyFootprint&maxAllowableOffset=&geometryPrecision=&outSR=4326&defaultSR=&datumTransformation=&applyVCSProjection=false&returnIdsOnly=false&returnUniqueIdsOnly=false&returnCountOnly=false&returnExtentOnly=false&returnQueryGeometry=false&returnDistinctValues=false&cacheHint=false&orderByFields=&groupByFieldsForStatistics=&outStatistics=&having=&resultOffset=&resultRecordCount=&returnZ=false&returnM=false&returnExceededLimitFeatures=true&quantizationParameters=&sqlFormat=none&f=pjson&token="
@@ -85,6 +82,8 @@ function App() {
 
       <div className="App-header">
         <h1> Middle Earth GIS </h1>
+        <i className="fa-duotone fa-user"></i>
+        
       </div>
 
       <div className="App-body">
