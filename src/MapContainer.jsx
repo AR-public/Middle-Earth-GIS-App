@@ -23,15 +23,18 @@ const MapContainer = ({ zoom, center, isHidden, setMap }) => {
   
         const mapController = new LeafletMap(mapDiv);
         mapController.setView(center,zoom);
-  
+
+
         // Add a basemap
         vectorTileLayer("343d745043fd4573bb977f41e1ea2833", {
           apiKey: "AAPK559a52a5414144af8f7b12d06c04ec69O_HNHAFWc31Pgl5MMcdU41b5SN8nRtxxhvgE_gYAeC5csCdw5rrSLzlRB70vb-R1", // https://developers.arcgis.com
           portalURL: "https://aruifioladv6qgop.maps.arcgis.com"
         }).addTo(mapController);
         const onEachFeature = (feature, layer) => {
-          debugger;
-          const popupContent = `${feature.properties.name}`
+          // const popupContent = 'Filming Location: ${feature.properties.name} <br> ${feature.properties.description}';
+          
+          // Why doesn't the above line of code work? It's the exact same as the one below
+          const popupContent = `Filming Location: ${feature.properties.name} <br> ${feature.properties.description}`;
           layer.bindPopup(popupContent)
         }
        const pointFL = new FeatureLayer({url: "https://services8.arcgis.com/ZlzhoQRdJWTeuwEP/ArcGIS/rest/services/LordOfTheRingsLocations/FeatureServer/0", onEachFeature:onEachFeature}).addTo(mapController);
@@ -39,7 +42,7 @@ const MapContainer = ({ zoom, center, isHidden, setMap }) => {
        setMap(mapController);
       }
       
-
+    
 
       return () => {
         if(mapRefCurrent) {

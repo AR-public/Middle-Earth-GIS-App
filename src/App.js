@@ -82,7 +82,7 @@ function App() {
 
       <div className="App-header">
         <h1> Middle Earth GIS </h1>
-        <i className="fa-duotone fa-user"></i>
+        {/* <i className="fa-duotone fa-user"></i> */}
         
       </div>
 
