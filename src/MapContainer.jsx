@@ -33,8 +33,8 @@ const MapContainer = ({ zoom, center, isHidden, setMap }) => {
         const onEachFeature = (feature, layer) => {
           // const popupContent = 'Filming Location: ${feature.properties.name} <br> ${feature.properties.description}';
           
-          // Why doesn't the above line of code work? It's the exact same as the one below
-          const popupContent = `Filming Location: ${feature.properties.name} <br> ${feature.properties.description}`;
+          // Why doesn't the above line of code work? It's the exact same as the one below. ANS - It's using ` instead of '. The two are different.
+          const popupContent = `Filming Location: ${feature.properties.name} <br> ${feature.properties.description} <br> <img src = ${feature.properties.imageURL} width="250px" height="250px">`;
           layer.bindPopup(popupContent)
         }
        const pointFL = new FeatureLayer({url: "https://services8.arcgis.com/ZlzhoQRdJWTeuwEP/ArcGIS/rest/services/LordOfTheRingsLocations/FeatureServer/0", onEachFeature:onEachFeature}).addTo(mapController);
