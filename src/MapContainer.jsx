@@ -34,6 +34,7 @@ const MapContainer = ({ zoom, center, isHidden, setMap }) => {
           // const popupContent = 'Filming Location: ${feature.properties.name} <br> ${feature.properties.description}';
           
           // Why doesn't the above line of code work? It's the exact same as the one below. ANS - It's using ` instead of '. The two are different.
+          // Why doesn't the Esri Leaflet documentation not work? Is there documentation for the Leaflet library instead of using community forums?
           const popupContent = `Filming Location: ${feature.properties.name} <br> ${feature.properties.description} <br> <img src = ${feature.properties.imageURL} width="250px" height="250px">`;
           layer.bindPopup(popupContent)
         }
