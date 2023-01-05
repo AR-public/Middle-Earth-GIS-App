@@ -102,9 +102,9 @@ function App() {
           </div>
         {/* } */}
 
-        <div className='Map-grid'>
+        {/* <div className='Map-grid'> */}
           <MapContainer zoom={middleEarthGallery[0].zoomExtent} center={middleEarthGallery[0].coordinates} isHidden={isGalleryModeEnabled} setMap={setMap} />
-        </div>
+        {/* </div> */}
       </div>
     </div>
   );

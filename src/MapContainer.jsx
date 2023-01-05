@@ -43,7 +43,6 @@ const MapContainer = ({ zoom, center, isHidden, setMap }) => {
        setMap(mapController);
       }
       
-    
 
       return () => {
         if(mapRefCurrent) {
@@ -56,6 +55,5 @@ const MapContainer = ({ zoom, center, isHidden, setMap }) => {
         <div className="map" ref={mapRef}></div>
     )
 }
-
 
 export default MapContainer
