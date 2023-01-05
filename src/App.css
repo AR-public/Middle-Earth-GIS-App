@@ -11,10 +11,10 @@
   font-family: 'Cinzel Decorative', cursive;
   color: #BFBA73;
   height: 15vh;
-  font-size: 1.7rem;
+  font-size: 2.1rem;
   margin-top: 0%;
-  padding-top: 2.5vh;
-  padding-bottom: 2.5vh;
+  padding-top: 1vh;
+  padding-bottom: 4vh;
 }
 
 
@@ -28,14 +28,11 @@
 .Tile-grid {
   height: 80vh;
   overflow: auto;
+  overflow-x: hidden;
 }
 
 .Tile-grid::-webkit-scrollbar{
   display: none;
-}
-
-.Map-grid {
-  height: 80vh;
 }
 
 /* .gallery-button{
@@ -44,12 +41,15 @@
 
 .tile_container {
   width: 100%;
+  /* display: grid;
+  grid-template-columns: 1fr 1fr; */
+  /* gap: 1rem; */
   display: flex;
   flex-wrap: wrap;
   flex-direction: row;
   justify-content: space-around;
   align-items: center;
-  padding-bottom: 30px;
+  /* padding: 0 5px 5px 30px; */
 }
 
 .leaflet-container {
