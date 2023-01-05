@@ -1,6 +1,6 @@
 import './App.css';
 import { useEffect, useState } from 'react';
-import MapContainer from './MapContainer';
+import MapContainer, { HomeButton } from './MapContainer';
 import TileContainer from './utils/TileContainer';
 
 function App() {
@@ -41,6 +41,10 @@ function App() {
     mapController.setView(coordinates, 14);
   }
 
+  const homeLocation = () => {
+    mapController.setView([-43.000, 175.774966], 5);
+  }
+  
   // determines whether we are in gallery mode
   // gallery mode is defined as 
   // map hidden, gallery shown.
@@ -63,11 +67,12 @@ function App() {
           cleanValues.push({
             name: feature.attributes.name,
             link: feature.attributes.link,
-            imageLink: feature.attributes.imageURL,
+            imageLinkME: feature.attributes.imageURLMiddleEarth,
+            imageLinkNZ: feature.attributes.imageURLNewZealand,
+            trueLocation: feature.attributes.trueLocation,
             coordinates: [feature.geometry.y, feature.geometry.x],
           })
         })
-        // const cleanValues = d.features.map(({ attributes, geometry }) => Object.assign({}, attributes, geometry)).map(({ x, y, description, imageURL, name, link }) => ({ coordinates: [y, x], description, imageLink: imageURL, name, link }));
         setMiddleEarthGalleryValues(cleanValues);
       })
       // console.log(response.data);
@@ -104,6 +109,7 @@ function App() {
 
         {/* <div className='Map-grid'> */}
           <MapContainer zoom={middleEarthGallery[0].zoomExtent} center={middleEarthGallery[0].coordinates} isHidden={isGalleryModeEnabled} setMap={setMap} />
+          <span className='HomeButtonSpan'><HomeButton setCurrentMiddleEarthCoordinates={homeLocation}/></span>
         {/* </div> */}
       </div>
     </div>

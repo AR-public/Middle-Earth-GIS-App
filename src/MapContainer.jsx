@@ -9,7 +9,7 @@ import { vectorBasemapLayer as vectorTileLayer } from "esri-leaflet-vector";
 import { FeatureLayer } from 'esri-leaflet';
 
 
-const MapContainer = ({ zoom, center, isHidden, setMap }) => {
+const MapContainer = ({ zoom, center, isHidden, setMap}) => {
   // Create a map reference (note don't quite get how this works, and that's OK)  
   const mapRef = useRef(null);
 
@@ -24,7 +24,6 @@ const MapContainer = ({ zoom, center, isHidden, setMap }) => {
         const mapController = new LeafletMap(mapDiv);
         mapController.setView(center,zoom);
 
-
         // Add a basemap
         vectorTileLayer("343d745043fd4573bb977f41e1ea2833", {
           apiKey: "AAPK559a52a5414144af8f7b12d06c04ec69O_HNHAFWc31Pgl5MMcdU41b5SN8nRtxxhvgE_gYAeC5csCdw5rrSLzlRB70vb-R1", // https://developers.arcgis.com
@@ -34,16 +33,18 @@ const MapContainer = ({ zoom, center, isHidden, setMap }) => {
           // const popupContent = 'Filming Location: ${feature.properties.name} <br> ${feature.properties.description}';
           
           // Why doesn't the above line of code work? It's the exact same as the one below. ANS - It's using ` instead of '. The two are different.
-          // Why doesn't the Esri Leaflet documentation not work? Is there documentation for the Leaflet library instead of using community forums?
-          const popupContent = `Filming Location: ${feature.properties.name} <br> ${feature.properties.description} <br> <img src = ${feature.properties.imageURL} width="250px" height="250px">`;
+          // Why doesn't the Esri Leaflet documentation work? Is there documentation for the Leaflet library instead of using community forums?
+          const popupContent = `True Location: ${feature.properties.trueLocation} <br><br> ${feature.properties.description} <br><br> <img src = ${feature.properties.imageURLNewZealand} width="250px" height="250px">`;
           layer.bindPopup(popupContent)
         }
        const pointFL = new FeatureLayer({url: "https://services8.arcgis.com/ZlzhoQRdJWTeuwEP/ArcGIS/rest/services/LordOfTheRingsLocations/FeatureServer/0", onEachFeature:onEachFeature}).addTo(mapController);
        
+
        setMap(mapController);
+       
       }
       
-
+    
       return () => {
         if(mapRefCurrent) {
           mapRefCurrent.innerHTML = '';
@@ -57,3 +58,12 @@ const MapContainer = ({ zoom, center, isHidden, setMap }) => {
 }
 
 export default MapContainer
+
+export function HomeButton ({coordinates, setCurrentMiddleEarthCoordinates}) {
+  return (
+      <div className="map_home">
+          <span>
+              {<button onClick={(evt) => {setCurrentMiddleEarthCoordinates(coordinates)}}> HOME </button>}
+          </span>
+      </div>
+  )}
