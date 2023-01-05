@@ -82,13 +82,11 @@ function App() {
 
       <div className="App-header">
         <h1> Middle Earth GIS </h1>
-        {/* <i className="fa-duotone fa-user"></i> */}
-        
       </div>
 
       <div className="App-body">
         
-        <div className='gallery-button'>
+        {/* <div className='gallery-button'>
           {<button onClick={(evt) => { (isGalleryModeEnabled) ? setIsGalleryModeEnabled(false) : setIsGalleryModeEnabled(true) }}> Click to toggle gallery/map view </button>}
         </div>
         
@@ -98,13 +96,13 @@ function App() {
             NO DATA
           </div>
 
-          :
-          <div>
+          : */}
+          <div className='Tile-grid'>
             <TileContainer middleEarthLoaded={middleEarthGalleryValues} isHidden={!isGalleryModeEnabled} setCurrentMiddleEarthCoordinates={selectLocation} />
           </div>
-        }
+        {/* } */}
 
-        <div>
+        <div className='Map-grid'>
           <MapContainer zoom={middleEarthGallery[0].zoomExtent} center={middleEarthGallery[0].coordinates} isHidden={isGalleryModeEnabled} setMap={setMap} />
         </div>
       </div>
