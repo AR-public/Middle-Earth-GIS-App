@@ -29,11 +29,8 @@ const MapContainer = ({ zoom, center, isHidden, setMap}) => {
           apiKey: "AAPK559a52a5414144af8f7b12d06c04ec69O_HNHAFWc31Pgl5MMcdU41b5SN8nRtxxhvgE_gYAeC5csCdw5rrSLzlRB70vb-R1", // https://developers.arcgis.com
           portalURL: "https://aruifioladv6qgop.maps.arcgis.com"
         }).addTo(mapController);
+        
         const onEachFeature = (feature, layer) => {
-          // const popupContent = 'Filming Location: ${feature.properties.name} <br> ${feature.properties.description}';
-          
-          // Why doesn't the above line of code work? It's the exact same as the one below. ANS - It's using ` instead of '. The two are different.
-          // Why doesn't the Esri Leaflet documentation work? Is there documentation for the Leaflet library instead of using community forums?
           const popupContent = `<b>True Location:</b> ${feature.properties.trueLocation} <br><br> ${feature.properties.description} <br><br> <img src = ${feature.properties.imageURLNewZealand} width="100%" height="250px">`;
           layer.bindPopup(popupContent)
         }

@@ -38,7 +38,7 @@ function App() {
   ]
 
   const selectLocation = (coordinates) => {
-    mapController.setView(coordinates, 14);
+    mapController.setView(coordinates, 12);
   }
 
   const homeLocation = () => {
