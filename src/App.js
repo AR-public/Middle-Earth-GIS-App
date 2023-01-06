@@ -109,7 +109,7 @@ function App() {
 
         {/* <div className='Map-grid'> */}
           <MapContainer zoom={middleEarthGallery[0].zoomExtent} center={middleEarthGallery[0].coordinates} isHidden={isGalleryModeEnabled} setMap={setMap} />
-          <span className='HomeButtonSpan'><HomeButton setCurrentMiddleEarthCoordinates={homeLocation}/></span>
+          <HomeButton setCurrentMiddleEarthCoordinates={homeLocation}/>
         {/* </div> */}
       </div>
     </div>

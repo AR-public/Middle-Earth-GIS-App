@@ -34,7 +34,7 @@ const MapContainer = ({ zoom, center, isHidden, setMap}) => {
           
           // Why doesn't the above line of code work? It's the exact same as the one below. ANS - It's using ` instead of '. The two are different.
           // Why doesn't the Esri Leaflet documentation work? Is there documentation for the Leaflet library instead of using community forums?
-          const popupContent = `True Location: ${feature.properties.trueLocation} <br><br> ${feature.properties.description} <br><br> <img src = ${feature.properties.imageURLNewZealand} width="250px" height="250px">`;
+          const popupContent = `<b>True Location:</b> ${feature.properties.trueLocation} <br><br> ${feature.properties.description} <br><br> <img src = ${feature.properties.imageURLNewZealand} width="250px" height="250px">`;
           layer.bindPopup(popupContent)
         }
        const pointFL = new FeatureLayer({url: "https://services8.arcgis.com/ZlzhoQRdJWTeuwEP/ArcGIS/rest/services/LordOfTheRingsLocations/FeatureServer/0", onEachFeature:onEachFeature}).addTo(mapController);
@@ -62,8 +62,6 @@ export default MapContainer
 export function HomeButton ({coordinates, setCurrentMiddleEarthCoordinates}) {
   return (
       <div className="map_home">
-          <span>
               {<button onClick={(evt) => {setCurrentMiddleEarthCoordinates(coordinates)}}> HOME </button>}
-          </span>
       </div>
   )}

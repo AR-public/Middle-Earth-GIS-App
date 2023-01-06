@@ -17,7 +17,6 @@
   padding-bottom: 4vh;
 }
 
-/* ***** ORIGINAL GRID CODE START ******* */
 .App-body {
   background-color:#0D1209;
   display: grid;
@@ -39,23 +38,12 @@
   grid-column-start: 2;
 }
 
-.HomeButtonSpan{
+.map_home{
   position: absolute;
   top: 21vh;
   right: 1vh;
   z-index: 2;
 }
-
-/* **** ORIGINAL GRID CODE END ****** */
-
-
-
-
-/* ***** NEW GRID CODE START ******* */
-
-
-/* ***** NEW GRID CODE END ******* */
-
 
 
 
