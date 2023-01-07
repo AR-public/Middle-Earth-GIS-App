@@ -55,7 +55,7 @@ const MapContainer = ({ zoom, center, isHidden, setMap }) => {
       }
       new FeatureLayer(featureLayerOptions).addTo(mapController);
 
-
+      // window.mFp = mapController;
       setMap(mapController);
 
     }
