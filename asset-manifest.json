@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/Middle-Earth-GIS-App/static/css/main.2fc1aa57.css",
+    "main.js": "/Middle-Earth-GIS-App/static/js/main.e6ce5d4c.js",
+    "static/js/787.7364ce0f.chunk.js": "/Middle-Earth-GIS-App/static/js/787.7364ce0f.chunk.js",
+    "index.html": "/Middle-Earth-GIS-App/index.html",
+    "main.2fc1aa57.css.map": "/Middle-Earth-GIS-App/static/css/main.2fc1aa57.css.map",
+    "main.e6ce5d4c.js.map": "/Middle-Earth-GIS-App/static/js/main.e6ce5d4c.js.map",
+    "787.7364ce0f.chunk.js.map": "/Middle-Earth-GIS-App/static/js/787.7364ce0f.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.2fc1aa57.css",
+    "static/js/main.e6ce5d4c.js"
+  ]
+}
