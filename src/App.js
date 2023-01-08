@@ -42,7 +42,7 @@ function App() {
   }
 
   const homeLocation = () => {
-    mapController.setView([-43.000, 175.774966], 5);
+    mapController.flyTo([-43.000, 175.774966], 5);
   }
 
   // determines whether we are in gallery mode
