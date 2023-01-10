@@ -49,7 +49,7 @@ function App() {
   // gallery mode is defined as 
   // map hidden, gallery shown.
   // if disabled, map shown, gallery hidden.
-  const [isGalleryModeEnabled, setIsGalleryModeEnabled] = useState(true);
+  // const [isGalleryModeEnabled, setIsGalleryModeEnabled] = useState(true);
   // putting the Middle Earth locations in useState to get the currentValue & setCurrentValue function
 
   const [middleEarthGalleryValues, setMiddleEarthGalleryValues] = useState(middleEarthGallery);
@@ -107,12 +107,12 @@ function App() {
 
           : */}
         <div className='Tile-grid'>
-          <TileContainer middleEarthLoaded={middleEarthGalleryValues} isHidden={!isGalleryModeEnabled} setCurrentMiddleEarthCoordinates={selectLocation} />
+          <TileContainer middleEarthLoaded={middleEarthGalleryValues} setCurrentMiddleEarthCoordinates={selectLocation} />
         </div>
         {/* } */}
 
         {/* <div className='Map-grid'> */}
-        <MapContainer zoom={middleEarthGallery[0].zoomExtent} center={middleEarthGallery[0].coordinates} isHidden={isGalleryModeEnabled} setMap={setMap} />
+        <MapContainer zoom={middleEarthGallery[0].zoomExtent} center={middleEarthGallery[0].coordinates} setMap={setMap} />
         <HomeButton setCurrentMiddleEarthCoordinates={homeLocation} />
         {/* </div> */}
       </div>
