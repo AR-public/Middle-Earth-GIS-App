@@ -10,3 +10,6 @@ const TileContainer = ({middleEarthLoaded, isHidden, setCurrentMiddleEarthCoordi
 }
 
 export default TileContainer
+
+// What .map does is that it loops through our entire 'location' array, object by object, and applies the Tile function on each of the items called.
+// This reduces repetition, and it allows it to dynamically create new tiles if the 'location' array is added to.
