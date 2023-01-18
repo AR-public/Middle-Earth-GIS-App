@@ -38,8 +38,9 @@ const MapContainer = ({ zoom, center, isHidden, setMap }) => {
 
 
       const hikerIcon = L.icon({
-        iconUrl: "http://static.arcgis.com/images/Symbols/NPS/npsPictograph_0231b.png",
-        iconSize: [18, 18]
+        iconUrl: "https://cdn-icons-png.flaticon.com/512/5606/5606682.png",
+        iconCredits: <a href="https://www.flaticon.com/free-icons/jewelry" title="jewelry icons">Jewelry icons created by Luvdat - Flaticon</a>,
+        iconSize: [20, 20]
       });
 
       // where I set my icon

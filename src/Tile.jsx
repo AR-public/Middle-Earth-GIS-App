@@ -6,7 +6,7 @@ export function Tile ({ name, link, imageLinkME, coordinates, setCurrentMiddleEa
             <img className="image" src={imageLinkME} alt="" srcset="" draggable="false" />
             <span>
                 {<button className='button' onClick={(evt) => {setCurrentMiddleEarthCoordinates(coordinates)}}>
-                    <span> Take me here </span> 
+                    <span> Fly here </span> 
                 </button>}
             </span>
 
