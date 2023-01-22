@@ -58,6 +58,7 @@ button {
       }
       button:hover {
         background-color: #aa7e2b;
+        
       }
       button:hover span {
         padding-right: 25px;

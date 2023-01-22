@@ -4,7 +4,7 @@
 import React, { useEffect, useRef } from 'react';
 import { Layer, Map as LeafletMap, } from "leaflet";
 import * as L from "leaflet";
-
+import MiniMap from 'leaflet-minimap';
 import { vectorBasemapLayer as vectorTileLayer } from "esri-leaflet-vector";
 import { FeatureLayer } from 'esri-leaflet';
 
@@ -25,10 +25,31 @@ const MapContainer = ({ zoom, center, isHidden, setMap }) => {
       mapController.setView(center, zoom);
 
       // Add a basemap
-      vectorTileLayer("343d745043fd4573bb977f41e1ea2833", {
+      const basemap = vectorTileLayer("343d745043fd4573bb977f41e1ea2833", {
         apiKey: "AAPK559a52a5414144af8f7b12d06c04ec69O_HNHAFWc31Pgl5MMcdU41b5SN8nRtxxhvgE_gYAeC5csCdw5rrSLzlRB70vb-R1", // https://developers.arcgis.com
         portalURL: "https://aruifioladv6qgop.maps.arcgis.com"
-      }).addTo(mapController);
+      });
+      
+      basemap.addTo(mapController);
+      
+      //dark map ID: 343d745043fd4573bb977f41e1ea2833
+      //light map ID: 7c77c0eda6e54a89b5fa76142c960681
+
+      // // Set minimap basemap
+      const miniBasemap = vectorTileLayer("215002305f664840a76a9778915e2c82", {
+        apiKey: "AAPK559a52a5414144af8f7b12d06c04ec69O_HNHAFWc31Pgl5MMcdU41b5SN8nRtxxhvgE_gYAeC5csCdw5rrSLzlRB70vb-R1", // https://developers.arcgis.com
+        portalURL: "https://aruifioladv6qgop.maps.arcgis.com"
+      });
+
+      // Set minimap
+      // new L.Control.MiniMap(miniBasemap).addTo(mapController);
+
+      // Unable to get the 'options' to work
+      new L.Control.MiniMap(miniBasemap, 
+        {zoomLevelOffset:-8,
+        toggleDisplay:true,
+        zoomAnimation:true,
+        }).addTo(mapController);
 
 
       const onEachFeature = (feature, layer) => {
@@ -54,8 +75,9 @@ const MapContainer = ({ zoom, center, isHidden, setMap }) => {
         onEachFeature,
         pointToLayer
       }
-      new FeatureLayer(featureLayerOptions).addTo(mapController);
 
+      new FeatureLayer(featureLayerOptions).addTo(mapController);
+      
       // window.mFp = mapController;
       setMap(mapController);
 
