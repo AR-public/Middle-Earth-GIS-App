@@ -7,6 +7,7 @@ import * as L from "leaflet";
 import MiniMap from 'leaflet-minimap';
 import { vectorBasemapLayer as vectorTileLayer } from "esri-leaflet-vector";
 import { FeatureLayer } from 'esri-leaflet';
+import './Control.MiniMap.min.css';
 
 
 const MapContainer = ({ zoom, center, isHidden, setMap }) => {
@@ -45,12 +46,11 @@ const MapContainer = ({ zoom, center, isHidden, setMap }) => {
       // new L.Control.MiniMap(miniBasemap).addTo(mapController);
 
       // Unable to get the 'options' to work
-      new L.Control.MiniMap(miniBasemap, 
+      new MiniMap(miniBasemap, 
         {zoomLevelOffset:-8,
         toggleDisplay:true,
         zoomAnimation:true,
         }).addTo(mapController);
-
 
       const onEachFeature = (feature, layer) => {
         const popupContent = `<b>True Location:</b> ${feature.properties.trueLocation} <br><br> ${feature.properties.description} <br><br> <img src = ${feature.properties.imageURLNewZealand} width="100%" height="250px">`;
