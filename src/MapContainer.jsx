@@ -33,11 +33,12 @@ const MapContainer = ({ zoom, center, isHidden, setMap }) => {
       
       basemap.addTo(mapController);
       
-      //dark map ID: 343d745043fd4573bb977f41e1ea2833
-      //light map ID: 7c77c0eda6e54a89b5fa76142c960681
+      //Brown map ID: 343d745043fd4573bb977f41e1ea2833
+      //Light Blue map ID: 7c77c0eda6e54a89b5fa76142c960681
+      //Green map ID: 35ca11f758b74e03b10f938f3cebcd52
 
       // // Set minimap basemap
-      const miniBasemap = vectorTileLayer("215002305f664840a76a9778915e2c82", {
+      const miniBasemap = vectorTileLayer("35ca11f758b74e03b10f938f3cebcd52", {
         apiKey: "AAPK559a52a5414144af8f7b12d06c04ec69O_HNHAFWc31Pgl5MMcdU41b5SN8nRtxxhvgE_gYAeC5csCdw5rrSLzlRB70vb-R1", // https://developers.arcgis.com
         portalURL: "https://aruifioladv6qgop.maps.arcgis.com"
       });
