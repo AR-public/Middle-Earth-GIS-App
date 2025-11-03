@@ -1,0 +1,26 @@
+# TODO - Middle-Earth-GIS-App with AI editing capabilities
+
+- [ ] TASK-001: Add functioning basemaps with existing sample points
+    - Description: Return the app to its original state with working basemaps (OpenStreetMap, Stamen Terrain) and display existing sample points.
+    - Acceptance: Basemap loads on app start; zoom/pan smooth; offline fallback placeholder.
+    - Priority: High | Estimate: 2h | Assignee: @Ahmad
+
+- [ ] TASK-002: Introduce basic Editing capabilities
+    - Description: Create a tool which allows users to add, edit, and delete point features on the map.
+    - Acceptance: Point editing tool should work as expected; users can add, move, and delete points; changes persist on reload.
+    - Priority: High | Estimate: 6h | Assignee: @Ahmad
+
+- [ ] TASK-003: Integrate stencil sketch for AI editing
+    - Description: A tool should allow the user to draw a polygon on the map and send it to a backend service for AI processing.
+    - Acceptance: Ask AI for how this can be done smoothly. Polygon drawing tool works; polygon data sent to backend; response received and displayed on map.
+    - Priority: Medium | Estimate: 12h | Assignee: @Ahmad
+
+- [ ] TASK-004: Refine editing tool
+    - Description: Provide user with the ability to give a prompt. Provide the user with a few different returned options.
+    - Acceptance: User can input prompt; multiple AI-generated options displayed; user can select and apply an option to the map.
+    - Priority: Medium | Estimate: 12h | Assignee: @Ahmad
+
+- [ ] TASK-005: Share for feedback and iterate
+    - Description: Share the updated app with stakeholders for feedback on the new editing features and AI
+    - Acceptance: Feedback collected; list of improvements created; plan for next iteration established.
+    - Priority: Low | Estimate: 6h | Assignee: @Ahmad

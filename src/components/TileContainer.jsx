@@ -1,5 +1,5 @@
 import React from 'react'
-import { Tile } from '../Tile'
+import { Tile } from './Tile'
 
 const TileContainer = ({middleEarthLoaded, isHidden, setCurrentMiddleEarthCoordinates}) => {
   return (
